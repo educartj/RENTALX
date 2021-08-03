@@ -6,9 +6,11 @@ interface IOptions {
 
 getConnectionOptions().then(options => {
   const newOptions = options as IOptions;
-  newOptions.host = 'rentalx';
+  newOptions.host = 'database_ignite';
   createConnection({
     ...options,
   });
 });
+
+console.log('Arquivo database');
 createConnection();
