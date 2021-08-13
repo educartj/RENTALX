@@ -1,10 +1,11 @@
 import { getRepository, Repository } from 'typeorm';
-import { injectable } from 'tsyringe';
-import { IUsersRepository } from '../IUsersRepository';
-import { ICreateUserDTO } from '../../dtos/ICreateUsersDTO';
-import { User } from '../../entities/User';
 
-@injectable()
+import { ICreateUserDTO } from '@modules/accounts/dtos/ICreateUserDTO';
+import { IUsersRepository } from '@modules/accounts/repositories/IUsersRepository';
+
+import { User } from '../entities/User';
+
+
 class UsersRepository implements IUsersRepository {
   private repository: Repository<User>;
 
