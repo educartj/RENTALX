@@ -1,8 +1,8 @@
-import { Column, CreateDateColumn, Entity, PrimaryColumn } from "typeorm";
-import { Expose } from "class-transformer";
-import { v4 as uuidV4 } from "uuid";
+import { Expose } from 'class-transformer';
+import { Column, CreateDateColumn, Entity, PrimaryColumn } from 'typeorm';
+import { v4 as uuidV4 } from 'uuid';
 
-@Entity("users")
+@Entity('users')
 class User {
   @PrimaryColumn()
   id: string;
@@ -28,12 +28,12 @@ class User {
   @CreateDateColumn()
   created_at: Date;
 
-  @Expose({ name: "avatar_url" })
+  @Expose({ name: 'avatar_url' })
   avatar_url(): string {
     switch (process.env.disk) {
-      case "local":
+      case 'local':
         return `${process.env.APP_API_URL}/avatar/${this.avatar}`;
-      case "s3":
+      case 's3':
         return `${process.env.AWS_BUCKET_URL}/avatar/${this.avatar}`;
       default:
         return null;

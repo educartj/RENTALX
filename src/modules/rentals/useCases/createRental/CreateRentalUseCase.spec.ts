@@ -76,7 +76,7 @@ describe('Create Rental', () => {
         car_id: 'test',
         expected_return_date: dayAdd24Hours,
       }),
-    ).rejects.toEqual(new AppError('Car is unavailable'));
+    ).rejects.toEqual(new AppError('car_rent_in_progress'));
   });
 
   it(' should not be able to create a new rental with invalid return time ', async () => {
@@ -86,6 +86,6 @@ describe('Create Rental', () => {
         car_id: 'test',
         expected_return_date: dayjs().toDate(),
       }),
-    ).rejects.toEqual(new AppError('Invalid return time!'));
+    ).rejects.toEqual(new AppError('invalid_return_rent_date'));
   });
 });

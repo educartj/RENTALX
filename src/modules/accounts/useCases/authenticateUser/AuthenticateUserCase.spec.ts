@@ -1,8 +1,8 @@
-import { AppError } from '@shared/errors';
 import { ICreateUserDTO } from '@modules/accounts/dtos/ICreateUserDTO';
 import { UsersRepositoryInMemory } from '@modules/accounts/repositories/in-memory/UsersRepositoryInMemory';
-import { UsersTokensRepositoryInMemory } from "@modules/accounts/repositories/in-memory/UsersTokensRepositoryInMemory";
+import { UsersTokensRepositoryInMemory } from '@modules/accounts/repositories/in-memory/UsersTokensRepositoryInMemory';
 import { DayjsDateProvider } from '@shared/container/providers/DateProvider/implementations/DayjsDateProvider';
+import { AppError } from '@shared/errors';
 
 import { CreateUserUseCase } from '../createUser/CreateUserUseCase';
 import { AuthenticateUserUseCase } from './AuthenticateUserUseCase';
@@ -21,8 +21,9 @@ describe('Authenticate User', () => {
 
     createUserUseCase = new CreateUserUseCase(usersRepositoryInMemory);
     authenticateUserUseCase = new AuthenticateUserUseCase(
-      usersRepositoryInMemory, userTokensRepositoryInMemory,
-      dateProvider
+      usersRepositoryInMemory,
+      userTokensRepositoryInMemory,
+      dateProvider,
     );
   });
   it('should be able to authenticate', async () => {

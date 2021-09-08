@@ -6,18 +6,18 @@ import {
   ManyToOne,
   PrimaryColumn,
   UpdateDateColumn,
-} from "typeorm";
-import { v4 as uuidV4 } from "uuid";
+} from 'typeorm';
+import { v4 as uuidV4 } from 'uuid';
 
-import { Car } from "@modules/cars/infra/typeorm/entities/Car";
+import { Car } from '@modules/cars/infra/typeorm/entities/Car';
 
-@Entity("rentals")
+@Entity('rentals')
 class Rental {
   @PrimaryColumn()
   id: string;
 
   @ManyToOne(() => Car)
-  @JoinColumn({ name: "car_id" })
+  @JoinColumn({ name: 'car_id' })
   car: Car;
 
   @Column()

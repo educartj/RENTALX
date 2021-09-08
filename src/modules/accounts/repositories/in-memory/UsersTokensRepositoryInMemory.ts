@@ -1,6 +1,7 @@
-import { ICreateUserTokenDTO } from "@modules/accounts/dtos/ICreateUserTokenDTO";
-import { UserTokens } from "@modules/accounts/infra/typeorm/entities/UserTokens";
-import { IUsersTokensRepository } from "../IUsersTokensRepository";
+import { ICreateUserTokenDTO } from '@modules/accounts/dtos/ICreateUserTokenDTO';
+import { UserTokens } from '@modules/accounts/infra/typeorm/entities/UserTokens';
+
+import { IUsersTokensRepository } from '../IUsersTokensRepository';
 
 class UsersTokensRepositoryInMemory implements IUsersTokensRepository {
   usersTokens: UserTokens[] = [];
@@ -25,22 +26,22 @@ class UsersTokensRepositoryInMemory implements IUsersTokensRepository {
 
   async findByUserIdAndRefreshToken(
     user_id: string,
-    refresh_token: string
+    refresh_token: string,
   ): Promise<UserTokens> {
     const userToken = this.usersTokens.find(
-      (ut) => ut.user_id === user_id && ut.refresh_token && refresh_token
+      ut => ut.user_id === user_id && ut.refresh_token && refresh_token,
     );
     return userToken;
   }
 
   async deleteById(id: string): Promise<void> {
-    const userToken = this.usersTokens.find((ut) => ut.id === id);
+    const userToken = this.usersTokens.find(ut => ut.id === id);
     this.usersTokens.splice(this.usersTokens.indexOf(userToken));
   }
 
   async findByRefreshToken(refresh_token: string): Promise<UserTokens> {
     const userToken = this.usersTokens.find(
-      (ut) => ut.refresh_token === refresh_token
+      ut => ut.refresh_token === refresh_token,
     );
     return userToken;
   }
