@@ -1,8 +1,7 @@
 import { SpecificationsRepository } from "@modules/cars/infra/typeorm/repositories/SpecificationsRepository";
 import { CarsRepositoryInMemory } from "@modules/cars/repositories/in-memory/CarsRepositoryInMemory";
 import { SpecificationsRepositoryInMemory } from "@modules/cars/repositories/in-memory/SpecificationsRepositoryInMemory";
-
-import { AppError } from "@shared/errors/AppError";
+import { AppError } from '@shared/errors';
 import { CreateCarSpecificationUseCase } from "./CreateCarSpecificationUseCase";
 
 let createCarSpecificationUseCase: CreateCarSpecificationUseCase;
@@ -28,7 +27,7 @@ describe("Create Car Specification", () => {
         car_id,
         specifications_id,
       })
-    ).rejects.toEqual(new AppError("Car does not exists!"));
+    ).rejects.toEqual(new AppError('car_is_not_registered'));
   });
 
   it("should be able to add a new specification to the car", async () => {

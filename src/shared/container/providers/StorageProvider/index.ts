@@ -1,8 +1,8 @@
-import { container } from "tsyringe";
+import { container } from 'tsyringe';
 
-import { LocalStorageProvider } from "./implementations/LocalStorageProvider";
-import { S3StorageProvider } from "./implementations/S3StorageProvider";
-import { IStorageProvider } from "./IStorageProvider";
+import { LocalStorageProvider } from './implementations/LocalStorageProvider';
+import { S3StorageProvider } from './implementations/S3StorageProvider';
+import { IStorageProvider } from './IStorageProvider';
 
 const diskStorage = {
   local: LocalStorageProvider,
@@ -10,6 +10,6 @@ const diskStorage = {
 };
 
 container.registerSingleton<IStorageProvider>(
-  "StorageProvider",
-  diskStorage[process.env.disk]
+  'StorageProvider',
+  diskStorage[process.env.disk],
 );

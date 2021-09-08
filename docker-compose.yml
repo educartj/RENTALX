@@ -1,4 +1,4 @@
-version: "3.7"
+version: "3.9"
 services:
   database_ignite:
     image: postgres
@@ -11,7 +11,12 @@ services:
       - POSTGRES_PASSWORD=ignite
       - POSTGRES_DB=rentalx
     volumes:
-      - pgdata:/data/postgres
+      - pgdata:/data/
+
+  redis:
+    image: redis:alpine
+    ports:
+      - 6379:6379
   app:
     build: .
     container_name: rentalx

@@ -1,7 +1,7 @@
 import { hash } from "bcryptjs";
+import { createConnection } from "typeorm";
 import { v4 as uuidV4 } from "uuid";
 
-import createConnection from "../index";
 
 async function create() {
   const connection = await createConnection();

@@ -1,11 +1,11 @@
-import { S3 } from "aws-sdk";
-import fs from "fs";
-import mime from "mime";
-import { resolve } from "path";
+import { S3 } from 'aws-sdk';
+import fs from 'fs';
+import mime from 'mime';
+import { resolve } from 'path';
 
-import upload from "@config/upload";
+import upload from '@config/upload';
 
-import { IStorageProvider } from "../IStorageProvider";
+import { IStorageProvider } from '../IStorageProvider';
 
 class S3StorageProvider implements IStorageProvider {
   private client: S3;
@@ -27,7 +27,7 @@ class S3StorageProvider implements IStorageProvider {
       .putObject({
         Bucket: `${process.env.AWS_BUCKET}/${folder}`,
         Key: file,
-        ACL: "public-read",
+        ACL: 'public-read',
         Body: fileContent,
         ContentType,
       })
